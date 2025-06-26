@@ -5,7 +5,6 @@ import uuid
 import threading
 import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
-from datasets import load_dataset
 import librosa
 import numpy as np
 from openai import OpenAI
