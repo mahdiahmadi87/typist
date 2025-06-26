@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>در حال پردازش...</title>
+    <script>
+        function checkStatus() {
+            fetch('/api/status/{{ task_id }}')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 'done') {
+                        window.location.href = '/result/{{ task_id }}';
+                    } else {
+                        setTimeout(checkStatus, 2000);
+                    }
+                });
+        }
+
+        window.onload = function() {
+            checkStatus();
+        };
+    </script>
+</head>
+<body>
+    <h2>لطفاً صبر کنید...</h2>
+    <img src="/static/loading.gif" alt="Loading..." />
+</body>
+</html>
